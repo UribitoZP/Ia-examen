@@ -1,6 +1,29 @@
-part of 'chat_bloc.dart';
+import 'package:equatable/equatable.dart';
+import '../models/chat_model.dart';
 
-@immutable
-sealed class ChatState {}
+abstract class ChatState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
-final class ChatInitial extends ChatState {}
+class ChatInitial extends ChatState {}
+
+class ChatLoading extends ChatState {}
+
+class ChatSuccess extends ChatState {
+  final List<Message> messages;
+
+  ChatSuccess(this.messages);
+
+  @override
+  List<Object> get props => [messages];
+}
+
+class ChatFailure extends ChatState {
+  final String error;
+
+  ChatFailure(this.error);
+
+  @override
+  List<Object> get props => [error];
+}

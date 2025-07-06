@@ -1,4 +1,17 @@
-part of 'chat_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-@immutable
-sealed class ChatEvent {}
+abstract class ChatEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class SendMessageEvent extends ChatEvent {
+  final String message;
+
+  SendMessageEvent(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+class ClearChatEvent extends ChatEvent {}

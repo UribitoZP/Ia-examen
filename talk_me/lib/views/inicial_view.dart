@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class inicio extends StatelessWidget {
-  const inicio({
+import '../bloc/chat_bloc.dart';
+import '../bloc/chat_event.dart';
+
+class Inicio extends StatelessWidget {
+  const Inicio({
     super.key,
   });
 
@@ -24,7 +28,7 @@ class inicio extends StatelessWidget {
               SizedBox(height: 24),
               ElevatedButton(
               onPressed: () {
-                //accion bloc
+                 context.read<ChatBloc>().add(StartChatEvent());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,

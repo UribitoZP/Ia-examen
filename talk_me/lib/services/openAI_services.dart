@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class OpenAIService {
-  final String _apiKey = 'TU_API_KEY_AQUI';
+  final String _apiKey = 'sk-a4ecbb226e9c482ea890fd2f70c5671e';
 
   Future<String> sendMessage(String message) async {
-    const url = 'https://api.openai.com/v1/chat/completions';
+    const url = 'https://api.deepseek.com/v1/chat/completions';
 
     final response = await http.post(
       Uri.parse(url),
@@ -14,7 +14,7 @@ class OpenAIService {
         'Authorization': 'Bearer $_apiKey',
       },
       body: jsonEncode({
-        "model": "gpt-3.5-turbo",
+        "model": "deepseek-chat",
         "messages": [
           {"role": "user", "content": message}
         ]
